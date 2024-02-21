@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Inventory Home{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to Inventory</h1>
+        <p class="lead">Manage your inventory with ease.</p>
+        <hr class="my-4">
+        <p>Log in to access your account.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'user_login' %}" role="button">Proceed to login</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Approve Inventory{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4">Welcome, {{ request.user.username }}</h2>
+    
+    <!-- Form to approve inventory record -->
+    <div class="mt-4">
+        <h3>Approve Inventory</h3>
+        <form id="approveInventoryForm" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="inventory_id" class="form-label">Inventory ID:</label>
+                <input type="text" class="form-control" id="inventory_id" name="inventory_id">
+            </div>
+            <button type="submit" class="btn btn-primary">Approve Inventory</button>
+        </form>
+    </div>
+    
+    <!-- List of pending inventory items for approval -->
+    <div class="mt-4">
+        <h3>Pending Inventory Items for Approval</h3>
+        <ul class="list-group">
+            {% for inventory in pending_inventory %}
+                <li class="list-group-item">{{ inventory.product_name }} - {{ inventory.vendor }} (ID: {{ inventory.id }})</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% block js %}
+<script>
+    document.getElementById("approveInventoryForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+        fetch("{% url 'approve_inventory_record' %}", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+            // Reload the page or perform any other action after successful approval
+            location.reload();
+        })
+        .catch(error => {
+            alert("An error occurred while approving the inventory.");
+            console.error(error);
+        });
+    });
+</script>
+{% endblock %}
+{% endblock %}

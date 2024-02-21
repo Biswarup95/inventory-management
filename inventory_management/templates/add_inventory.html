@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Inventory{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div id="loginFormContainer" style="max-width: 400px; margin: auto;">
+        <h2 style="text-align: center;">Add Inventory</h2>
+        <form id="loginForm" method="POST">
+            {% csrf_token %}
+            <div style="margin-bottom: 15px;">
+                <label for="product_id" style="font-weight: bold;">Product ID:</label><br>
+                <input type="text" id="product_id" name="product_id" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="product_name" style="font-weight: bold;">Product Name:</label><br>
+                <input type="text" id="product_name" name="product_name" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="vendor" style="font-weight: bold;">Vendor:</label><br>
+                <input type="text" id="vendor" name="vendor" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="mrp" style="font-weight: bold;">MRP:</label><br>
+                <input type="number" id="mrp" name="mrp" step="0.01" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="batch_num" style="font-weight: bold;">Batch Number:</label><br>
+                <input type="text" id="batch_num" name="batch_num" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="batch_date" style="font-weight: bold;">Batch Date:</label><br>
+                <input type="date" id="batch_date" name="batch_date" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="quantity" style="font-weight: bold;">Quantity:</label><br>
+                <input type="number" id="quantity" name="quantity" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="status" style="font-weight: bold;">Status:</label><br>
+                <select id="status" name="status" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="Approved">Approved</option>
+                    <option value="Pending">Pending</option>
+                </select>
+            </div>
+            <button type="submit" style="background-color: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Add Inventory</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

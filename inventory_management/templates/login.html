@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div id="loginFormContainer" style="max-width: 400px; margin: auto;">
+        <h2 style="text-align: center;">Login</h2>
+        <form id="loginForm" method="POST">
+            {% csrf_token %}
+            <div style="margin-bottom: 15px;">
+                <label for="username" style="font-weight: bold;">Username:</label><br>
+                <input type="text" id="username" name="username" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="password" style="font-weight: bold;">Password:</label><br>
+                <input type="password" id="password" name="password" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+            <button type="submit" style="background-color: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Login</button>
+        </form>
+    </div>
+    <p style="text-align: center;">Don't have an account? <a href="{% url 'signup' %}" style="color: #007bff; text-decoration: none;">Sign up</a></p>
+</div>
+{% endblock %}

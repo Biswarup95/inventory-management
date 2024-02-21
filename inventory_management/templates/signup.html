@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div id="signupFormContainer" style="max-width: 400px; margin: auto;">
+        <h2 style="text-align: center;">Signup</h2>
+        <form id="signupForm" method="POST">
+            {% csrf_token %}
+            <div style="margin-bottom: 15px;">
+                <label for="signup_username" style="font-weight: bold;">Username:</label><br>
+                <input type="text" class="form-control" id="signup_username" name="signup_username" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="email" style="font-weight: bold;">Email:</label><br>
+                <input type="email" class="form-control" id="email" name="email" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="user_role" style="font-weight: bold;">Role:</label><br>
+                <select class="form-control" id="user_role" name="user_role" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="Department Manager">Department Manager</option>
+                    <option value="Store Manager">Store Manager</option>
+                </select>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="signup_password" style="font-weight: bold;">Password:</label><br>
+                <input type="password" class="form-control" id="signup_password" name="signup_password" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="confirm_password" style="font-weight: bold;">Confirm Password:</label><br>
+                <input type="password" class="form-control" id="confirm_password" name="confirm_password" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; background-color: #007bff; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">Submit</button>
+        </form>
+    </div>
+    <p style="text-align: center; margin-top: 15px;">Already have an account? <a href="{% url 'user_login' %}" style="color: #007bff; text-decoration: none;">Login</a></p>
+</div>
+{% endblock %}
